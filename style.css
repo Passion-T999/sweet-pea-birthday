@@ -1,0 +1,358 @@
+:root {
+  --primary-pink: #ff6b8b;
+  --soft-pink: #ffe6eb;
+  --accent-rose: #d63384;
+  --text-dark: #2c2c2c;
+  --card-bg: rgba(255, 255, 255, 0.92);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #feada6 100%);
+  min-height: 100vh;
+  color: var(--text-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  padding: 20px;
+}
+
+/* Floating Hearts Background */
+.bg-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.heart-particle {
+  position: absolute;
+  color: rgba(255, 107, 139, 0.6);
+  font-size: 1.5rem;
+  animation: floatUp 6s linear infinite;
+  bottom: -50px;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.8) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-105vh) scale(1.2) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Main Layout */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  text-align: center;
+}
+
+.header h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  color: #800020;
+  margin-top: 8px;
+}
+
+.header p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: var(--accent-rose);
+  text-transform: uppercase;
+}
+
+/* Envelope Container */
+.envelope-wrapper {
+  cursor: pointer;
+  perspective: 1000px;
+  margin: 20px 0;
+}
+
+.envelope {
+  position: relative;
+  width: 280px;
+  height: 180px;
+  background: #f8ad9d;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.4s ease;
+}
+
+.envelope-wrapper:hover .envelope {
+  transform: translateY(-5px);
+}
+
+.heart-seal {
+  font-size: 2rem;
+  z-index: 5;
+  transition: transform 0.3s ease;
+}
+
+.letter {
+  position: absolute;
+  bottom: 10px;
+  width: 90%;
+  height: 160px;
+  background: white;
+  border-radius: 6px;
+  padding: 15px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.27);
+  z-index: 2;
+  overflow: hidden;
+  padding: 5px ;
+}
+
+.letter-content h2 {
+  font-family: 'Dancing Script', cursive;
+  color: var(--accent-rose);
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.letter-content p {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: #444;
+}
+
+.letter-content .signature {
+  margin-top: 10px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.1rem;
+  color: var(--accent-rose);
+}
+
+/* Envelope Open Animation State */
+.envelope-wrapper.open .letter {
+  transform: translateY(-130px);
+  height: 240px;
+  z-index: 10;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.envelope-wrapper.open .heart-seal {
+  transform: scale(0);
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Reasons Card Box */
+.reasons-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+}
+
+.reasons-card h3 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.8rem;
+  color: var(--accent-rose);
+  margin-bottom: 12px;
+}
+
+.reason-display {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #333;
+  padding: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.btn {
+  background: linear-gradient(45deg, #ff6b8b, #d63384);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(214, 51, 132, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+footer {
+  font-size: 0.8rem;
+  color: #777;
+}
+/* Music Toggle Button */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid var(--primary-pink);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.music-btn:active {
+  transform: scale(0.9);
+}
+
+.music-btn.playing {
+  animation: pulse 1.8s infinite;
+  background: var(--soft-pink);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 107, 139, 0.6); }
+  70% { box-shadow: 0 0 0 12px rgba(255, 107, 139, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 107, 139, 0); }
+}
+/* Music Player Floating Widget */
+.music-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px 14px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  border: 2px solid var(--primary-pink);
+  z-index: 100;
+}
+
+.music-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--soft-pink);
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-btn-small {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.song-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-rose);
+  max-width: 110px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Giant Heart Styles */
+.giant-heart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+  
+}
+
+.giant-heart {
+  font-size: 5.5rem;
+  animation: heartbeat 1.2s infinite alternate ease-in-out;
+  filter: drop-shadow(0 0 20px rgba(255, 75, 111, 0.5));
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+.giant-heart:active {
+  transform: scale(1.4);
+}
+
+/* Floating Love Popup Notification */
+.love-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #ff758f;
+  color: #d90429;
+  padding: 15px 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  text-align: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27);
+}
+
+/* Show class triggered by JS */
+.love-popup.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
